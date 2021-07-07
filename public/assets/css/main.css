@@ -1,4 +1,4 @@
-@import url(font-awesome.min.css);
+
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
 
 */
@@ -59,8 +59,8 @@
   
   .form button {
 	cursor: pointer;
-	background-color: #a3a3a3;
-	border: 2px solid #a3a3a3;
+	background-color: #f5d1ff;
+	border: 2px solid #f5d1ff;
 	border-radius: 4px;
 	color: #fff;
 	display: block;
@@ -2314,7 +2314,7 @@
 
 		input[type="text"]:focus,
 		input[type="password"]:focus,
-		input[type="email"]:focus,
+		input[type="email"]:focus, input[type="date"]:focus,
 		select:focus,
 		textarea:focus {
 			border-color: #54a354;
