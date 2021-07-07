@@ -8,7 +8,7 @@ const validateLib = require('./ValidationLib');
  */
 function validateUser(userObj) {
     // Check required fields
-    let result = validateLib.checkRequired("username", userObj.username);
+    let result = validateLib.checkRequired("nachname", userObj.nachname);
     if (result.isNotValid) { return result; }
 
     result = validateLib.checkRequired("email", userObj.email);
@@ -18,7 +18,7 @@ function validateUser(userObj) {
     if (result.isNotValid) { return result; }
 
     //check length
-    result = validateLib.checkLength("username",userObj.username, 3, 15);
+    result = validateLib.checkLength("nachname",userObj.nachname, 3, 15);
     if (result.isNotValid) { return result; }
 
     result = validateLib.checkLength("password", userObj.password, 6, 25);
@@ -26,6 +26,14 @@ function validateUser(userObj) {
 
     //check email syntax
     result = validateLib.checkEmail("email", userObj.email);
+    if (result.isNotValid) { return result; }
+
+    //check isNumber
+    result = validateLib.checkIsNumber("personenanzahl", userObj.personenanzahl);
+    if (result.isNotValid) { return result; }
+
+    //check isDate
+    result = validateLib.checkIsDate("datum", userObj.datum);
     if (result.isNotValid) { return result; }
 
     //all inputs are valid and isNotValid=false

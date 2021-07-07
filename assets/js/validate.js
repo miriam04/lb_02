@@ -4,6 +4,7 @@
 const form = document.getElementById('form');
 const nachname = document.getElementById('nachname');
 const email = document.getElementById('email');
+const personenAnzahl = document.getElementById('personenanzahl')
 const passwort = document.getElementById('passwort');
 const datum = document.getElementById('datum');
 
@@ -30,6 +31,16 @@ function checkEmail(input) {
   } else {
     showError(input, 'Email ist ungültig');
   }
+}
+
+
+function checkIsNummer(input) {
+    if(!isNaN(input.value)) {
+      showSuccess(input);
+      return true
+    } else {
+      showError(input, 'Bitte eine Zahl eingeben');
+    }
 }
 
 // notwendige Felder überprüfen
@@ -75,12 +86,14 @@ function handleSuccess() {
 }
 
 function validateForm(){
-  if(!checkRequired([nachname, email, passwort, datum])){
+  if(!checkRequired([nachname, email, passwort, datum, personenAnzahl])){
       let statusList = []
     //Validierung Zeichenlänge
     statusList.push(checkLength(nachname, 3, 15));
     statusList.push(checkLength(passwort, 6, 25));
     statusList.push(checkEmail(email));
+    console.log(personenAnzahl.value)
+    statusList.push(checkIsNummer(personenAnzahl))
 
   //Erfolgsmeldung
       statusList = statusList.filter(x => x !== true)

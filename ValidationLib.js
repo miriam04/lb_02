@@ -77,6 +77,42 @@ function checkLength(id, input, min, max) {
     return result;
 }
 
+function checkIsNumber(id, input) {
+    console.log('checkIsNumber')
+    let result = {
+        isNotValid: false,
+        msg: showSuccess(id)
+    }
+
+    if(isNaN(input)) {
+        result = {
+            isNotValid: true,
+            msg: showError(id,
+            `${id} must be a number`)
+        }
+    }
+
+    return result
+}
+
+function checkIsDate(id, input) {
+    console.log('checkdate')
+    let result = {
+        isNotValid: false,
+        msg: showSuccess(id)
+    }
+
+    if (Date.parse(input) == 0 || isNaN(Date.parse(input))) {
+        result = {
+            isNotValid: true,
+            msg: showError(id,
+            `${id} must be a date`)
+        }
+    }
+
+    return result
+}
+
 /**
  *  Export validation functions for further usage.
  *  function to export WITHOUT brackets!
@@ -84,5 +120,7 @@ function checkLength(id, input, min, max) {
 module.exports = {
     checkEmail,
     checkLength,
-    checkRequired
+    checkRequired,
+    checkIsNumber,
+    checkIsDate
 }
