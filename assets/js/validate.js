@@ -4,10 +4,10 @@
 */
 
 const form = document.getElementById('form');
-const username = document.getElementById('username');
+const username = document.getElementById('nachname');
 const email = document.getElementById('email');
-const password = document.getElementById('password');
-const birthday = document.getElementById('birthday');
+const password = document.getElementById('passwort');
+const birthday = document.getElementById('tischreservierungsdatum');
 
 // Show input error message
 function showError(input, message) {
@@ -47,7 +47,7 @@ function checkRequired(inputArr) {
   let isRequired = false;
   inputArr.forEach(function(input) {
     if (input.value.trim() === '') {
-      showError(input, `${getFieldName(input)} is required`);
+      showError(input, `${getFieldName(input)} ist erforderlich`);
       isRequired = true;
     } else {
       showSuccess(input);
@@ -62,12 +62,12 @@ function checkLength(input, min, max) {
   if (input.value.length < min) {
     showError(
         input,
-        `${getFieldName(input)} must be at least ${min} characters`
+        `${getFieldName(input)} muss mindestens ${min} Zeichen haben`
     );
   } else if (input.value.length > max) {
     showError(
         input,
-        `${getFieldName(input)} must be less than ${max} characters`
+        `${getFieldName(input)} muss weniger als ${max} Zeichen haben`
     );
   } else {
     showSuccess(input);

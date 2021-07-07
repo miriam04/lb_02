@@ -8,6 +8,7 @@ Der Server dient zu Übung zur Validierung von Benutzereingaben im Backend.
 
 let express = require("express");
 let bodyParser = require("body-parser");
+const path = require('path');
 let app     = express();
 const { v4: uuidv4 } = require('uuid');
 const UserRepository = require('./UserRepository');
@@ -28,16 +29,21 @@ const registrationFile = staticPath+'registration.json';
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Origin', 'http://localhost:63342');
-    res.header('Content-Type', 'application/json');
     next();
 });
 
+app.use(express.static(__dirname + '/public'));
 
 //test uuid
 app.get('/test1', (req, res) => {
     const id = uuidv4();
     res.send(id);
 });
+
+app.get('/', (req, res) => {
+    res.header('Content-Type', 'text/html');
+    res.sendFile(path.join(__dirname, '/index.html'));
+})
 
 // necessary for posting data
 // support json encoded bodies
